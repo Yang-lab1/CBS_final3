@@ -1,4 +1,5 @@
 
+
 import { TeamMember, JourneyPoint, EmotionCategory, Poem, AnalyticItem, LifeEvent, DrinkMood, LocalizedText } from './types';
 
 export const T: Record<string, LocalizedText> = {
@@ -70,49 +71,49 @@ export const TEAM_MEMBERS: TeamMember[] = [
     { 
         name: { zh: '李佳烨', en: 'Li Jiaye' }, 
         title: { zh: '项目经理', en: 'Project Manager' }, 
-        avatar: 'https://github.com/Yang-lab1/CHC-final/blob/main/picture/li_jiaye.jpg?raw=true', // Updated Image
+        avatar: 'https://github.com/Yang-lab1/CHC-final/blob/main/picture/li_jiaye.jpg?raw=true', 
         email: 'lijiayeee@126.com',
         linkedin: 'https://linkedin.com/in/jiaye-li-248784381'
     },
     { 
         name: { zh: '李子睿', en: 'Li Zirui' }, 
         title: { zh: 'AI工程师', en: 'AI Engineer' }, 
-        avatar: 'https://github.com/Yang-lab1/CHC-final/blob/main/picture/li_zirui.jpg?raw=true', // Image 2: Man, swing
+        avatar: 'https://github.com/Yang-lab1/CHC-final/blob/main/picture/li_zirui.jpg?raw=true',
         email: '25044237g@connect.polyu.hk',
         linkedin: 'https://linkedin.com/in/zi-rui-li-853ba0382'
     },
     { 
         name: { zh: '陈婧婧', en: 'Chen Jingjing' }, 
         title: { zh: '人文专家', en: 'Humanities Expert' }, 
-        avatar: 'https://github.com/Yang-lab1/CHC-final/blob/main/picture/chen_jingjing.jpg?raw=true', // Image 3: Woman, white top
+        avatar: 'https://github.com/Yang-lab1/CHC-final/blob/main/picture/chen_jingjing.jpg?raw=true',
         email: 'jocelynchen1225@gmail.com',
         linkedin: 'https://linkedin.com/in/jingjing-chen-619925381'
     },
     { 
         name: { zh: '林杨', en: 'Lin Yang' }, 
         title: { zh: '技术专家、软件工程师', en: 'Tech Expert, Software Engineer' }, 
-        avatar: 'https://github.com/Yang-lab1/CHC-final/blob/main/picture/lin_yang.jpg?raw=true', // Image 5: Man, XP background (Tech)
+        avatar: 'https://github.com/Yang-lab1/CHC-final/blob/main/picture/lin_yang.jpg?raw=true',
         email: 'lin297861138@gmail.com',
         linkedin: 'https://linkedin.com/in/yang-lin-3b1b09381'
     },
     { 
         name: { zh: '黎彦伶', en: 'Li Yanling' }, 
         title: { zh: '数据收集和处理分析工程师', en: 'Data Engineer' }, 
-        avatar: 'https://github.com/Yang-lab1/CHC-final/blob/main/picture/li_yanlin.jpg?raw=true', // Image 4: Woman, bookshelf (Scholar/Data)
+        avatar: 'https://github.com/Yang-lab1/CHC-final/blob/main/picture/li_yanlin.jpg?raw=true',
         email: 'lynn27149.li@gmail.com',
         linkedin: 'https://linkedin.com/in/yanling-li-b05359331'
     },
     { 
         name: { zh: '聂尔卓', en: 'Nie Erzhuo' }, 
         title: { zh: '全球营销', en: 'Global Marketing' }, 
-        avatar: 'https://github.com/Yang-lab1/CHC-final/blob/main/picture/nie_erzhuo.jpg?raw=true', // Image 6: Man, patterned shirt
+        avatar: 'https://github.com/Yang-lab1/CHC-final/blob/main/picture/nie_erzhuo.jpg?raw=true',
         email: '1849083010n@gmail.com',
         linkedin: 'https://linkedin.com/in/erzhuo-nie-ab7bb6381'
     },
     { 
         name: { zh: '白家树', en: 'Bai Jiashu' }, 
         title: { zh: '数据分析师、人文专家', en: 'Data Analyst, Humanities Expert' }, 
-        avatar: 'https://github.com/Yang-lab1/CHC-final/blob/main/picture/bai_jiashu.jpg?raw=true', // Image 7: Man, leather jacket
+        avatar: 'https://github.com/Yang-lab1/CHC-final/blob/main/picture/bai_jiashu.jpg?raw=true',
         email: '25116581g@connect.polyu.hk',
         linkedin: 'https://linkedin.com/in/kashupak'
     },
@@ -237,3 +238,179 @@ export const DATA_SOURCES: LocalizedText = {
     zh: "1. 古籍数字资源：《李太白集注》（卷三十五：李太白年谱）\nWang, Q. (Qing Dynasty). Li Taibai Ji Zhu( 35: Li Taibai Nian Pu) [Annotated collection of Li Bai's works (Vol. 35: Chronological biography of Li Bai)]. Chinese Text Project. https://ctext.org/wiki.pl?if=en&chapter=886336&remap=gb\n\n2. 数字可视化资源：唐宋文学编年地图（李白专题）\nSuzhou Tupu Information Technology Co., Ltd. (2025). Táng Sòng Wénxué Biānnián Dìtú - Lǐ Bái [Chronological literary map of Tang and Song dynasties - Li Bai] (Interactive digital map) [Data support: Wang, Z. P.]. CNKGraph. https://cnkgraph.com/Map/PoetLife?author=%e6%9d%8e%e7%99%bd\n\n3. Pugh, E. (2023, July 4). Digital art history as disciplinary practice. In M. K. Gold & L. F. Klein (Eds.), Debates in the digital humanities 2023 (pp. 217–237, Chapter 14). University of Minnesota Press. https://dhdebates.gc.cuny.edu/read/debates-in-the-digital-humanities-2023/section/7525de5d-a6fe-4fad-ab68-00e064ea2dca",
     en: "1. 古籍数字资源：《李太白集注》（卷三十五：李太白年谱）\nWang, Q. (Qing Dynasty). Li Taibai Ji Zhu( 35: Li Taibai Nian Pu) [Annotated collection of Li Bai's works (Vol. 35: Chronological biography of Li Bai)]. Chinese Text Project. https://ctext.org/wiki.pl?if=en&chapter=886336&remap=gb\n\n2. 数字可视化资源：唐宋文学编年地图（李白专题）\nSuzhou Tupu Information Technology Co., Ltd. (2025). Táng Sòng Wénxué Biānnián Dìtú - Lǐ Bái [Chronological literary map of Tang and Song dynasties - Li Bai] (Interactive digital map) [Data support: Wang, Z. P.]. CNKGraph. https://cnkgraph.com/Map/PoetLife?author=%e6%9d%8e%e7%99%bd\n\n3. Pugh, E. (2023, July 4). Digital art history as disciplinary practice. In M. K. Gold & L. F. Klein (Eds.), Debates in the digital humanities 2023 (pp. 217–237, Chapter 14). University of Minnesota Press. https://dhdebates.gc.cuny.edu/read/debates-in-the-digital-humanities-2023/section/7525de5d-a6fe-4fad-ab68-00e064ea2dca"
 };
+
+export interface NetworkNode {
+    id: string;
+    label: string;
+    role: string;
+    location: string;
+    sentiment: string;
+    group: string;
+    color: string;
+    rawRel: string;
+}
+
+export interface NetworkEdge {
+    source: string;
+    target: string;
+    label: string;
+    weight: number;
+}
+
+export const NETWORK_NODES_DATA: NetworkNode[] = [
+    {id: '32540', label: '李白', role: 'Ego (中心)', location: '未知', sentiment: '中性', group: '其他', color: '#bdc3c7', rawRel: ''},
+    {id: '3915', label: '杜甫', role: 'Alter (关联人)', location: '长安、洛阳、兖州', sentiment: '敬仰、惜别', group: '文学山水', color: '#27ae60', rawRel: '友'},
+    {id: '439016', label: '于逖', role: 'Alter (关联人)', location: '长安', sentiment: '敬仰', group: '文学山水', color: '#27ae60', rawRel: '友'},
+    {id: '445762', label: '元丹丘', role: 'Alter (关联人)', location: '嵩山、长安', sentiment: '敬仰', group: '文学山水', color: '#27ae60', rawRel: '友'},
+    {id: '445895', label: '張謂', role: 'Alter (关联人)', location: '长安、江夏', sentiment: '敬仰', group: '文学山水', color: '#27ae60', rawRel: '友'},
+    {id: '450698', label: '楊利物', role: 'Alter (关联人)', location: '金陵', sentiment: '敬仰', group: '文学山水', color: '#27ae60', rawRel: '友'},
+    {id: '512539', label: '吳指南', role: 'Alter (关联人)', location: '蜀中', sentiment: '悲愤', group: '其他', color: '#bdc3c7', rawRel: '友'},
+    {id: '447047', label: '吳筠', role: 'Alter (关联人)', location: '长安', sentiment: '感激', group: '政治得意', color: '#e74c3c', rawRel: '被Y推薦'},
+    {id: '447380', label: '宋若思', role: 'Alter (关联人)', location: '浔阳', sentiment: '感激', group: '政治得意', color: '#e74c3c', rawRel: '被Y推薦'},
+    {id: '93456', label: '張垍', role: 'Alter (关联人)', location: '长安', sentiment: '悲愤', group: '政治贬谪', color: '#2c3e50', rawRel: '遭到Y的反對/攻訐'},
+    {id: '94338', label: '高力士', role: 'Alter (关联人)', location: '长安', sentiment: '悲愤', group: '政治贬谪', color: '#2c3e50', rawRel: '遭到Y的反對/攻訐'},
+    {id: '11605', label: '蘇頲', role: 'Alter (关联人)', location: '蜀中', sentiment: '感激', group: '政治得意', color: '#e74c3c', rawRel: '被Y欣賞/器重'},
+    {id: '15353', label: '賀知章', role: 'Alter (关联人)', location: '长安', sentiment: '狂喜、敬仰', group: '文学山水', color: '#27ae60', rawRel: '被Y欣賞/器重'},
+    {id: '19244', label: '李隆基（唐玄宗）', role: 'Alter (关联人)', location: '长安', sentiment: '感激、敬仰', group: '政治得意', color: '#e74c3c', rawRel: '被Y欣賞/器重'},
+    {id: '92452', label: '司馬承禎', role: 'Alter (关联人)', location: '天台山', sentiment: '敬仰', group: '文学山水', color: '#27ae60', rawRel: '被Y欣賞/器重'},
+    {id: '189077', label: '李璘', role: 'Alter (关联人)', location: '江陵、浔阳', sentiment: '感激', group: '政治贬谪', color: '#2c3e50', rawRel: '被Y欣賞/器重'},
+    {id: '92180', label: '韋渠牟', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '學生為Y'},
+    {id: '92921', label: '李陽冰', role: 'Alter (关联人)', location: '当涂', sentiment: '感激', group: '其他', color: '#bdc3c7', rawRel: '為Y所著書作序'},
+    {id: '1571', label: '宋敏求', role: 'Alter (关联人)', location: '长安', sentiment: '敬仰', group: '其他', color: '#bdc3c7', rawRel: '書序由Y所作'},
+    {id: '4141', label: '樂史', role: 'Alter (关联人)', location: '长安', sentiment: '敬仰', group: '其他', color: '#bdc3c7', rawRel: '書序由Y所作'},
+    {id: '7364', label: '曾鞏', role: 'Alter (关联人)', location: '长安', sentiment: '敬仰', group: '其他', color: '#bdc3c7', rawRel: '書序由Y所作'},
+    {id: '176024', label: '魏顥', role: 'Alter (关联人)', location: '金陵', sentiment: '感激', group: '其他', color: '#bdc3c7', rawRel: '書序由Y所作'},
+    {id: '32162', label: '李華', role: 'Alter (关联人)', location: '当涂', sentiment: '感激', group: '其他', color: '#bdc3c7', rawRel: '墓誌銘由Y所作'},
+    {id: '32694', label: '賈至', role: 'Alter (关联人)', location: '长安、洛阳', sentiment: '敬仰', group: '文学山水', color: '#27ae60', rawRel: '從Y遊'},
+    {id: '173788', label: '李曄', role: 'Alter (关联人)', location: '夜郎', sentiment: '惜别', group: '政治贬谪', color: '#2c3e50', rawRel: '從Y遊'},
+    {id: '3640', label: '陸游', role: 'Alter (关联人)', location: '无直接互动', sentiment: '敬仰', group: '其他', color: '#bdc3c7', rawRel: '詩作為Y所稱道'},
+    {id: '196184', label: '章仇兼瓊', role: 'Alter (关联人)', location: '蜀中', sentiment: '悲愤', group: '政治贬谪', color: '#2c3e50', rawRel: '以詩諷忤Y'},
+    {id: '94367', label: '高霽', role: 'Alter (关联人)', location: '宣城', sentiment: '狂喜', group: '文学山水', color: '#27ae60', rawRel: '相唱和'},
+    {id: '445623', label: '王惠翼', role: 'Alter (关联人)', location: '长安', sentiment: '敬仰', group: '文学山水', color: '#27ae60', rawRel: '相唱和'},
+    {id: '446112', label: '張鎬', role: 'Alter (关联人)', location: '长安', sentiment: '敬仰', group: '政治得意', color: '#e74c3c', rawRel: '相唱和'},
+    {id: '446496', label: '盧虛舟', role: 'Alter (关联人)', location: '庐山', sentiment: '敬仰', group: '文学山水', color: '#27ae60', rawRel: '相唱和'},
+    {id: '446738', label: '崔叔封', role: 'Alter (关联人)', location: '长安', sentiment: '敬仰', group: '文学山水', color: '#27ae60', rawRel: '相唱和'},
+    {id: '446810', label: '崔成甫', role: 'Alter (关联人)', location: '金陵、长安', sentiment: '狂喜、惜别', group: '文学山水', color: '#27ae60', rawRel: '相唱和'},
+    {id: '447339', label: '竇公衡', role: 'Alter (关联人)', location: '长安', sentiment: '敬仰', group: '文学山水', color: '#27ae60', rawRel: '相唱和'},
+    {id: '447367', label: '宋泚', role: 'Alter (关联人)', location: '长安', sentiment: '敬仰', group: '文学山水', color: '#27ae60', rawRel: '相唱和'},
+    {id: '447855', label: '李幼成', role: 'Alter (关联人)', location: '长安', sentiment: '敬仰', group: '文学山水', color: '#27ae60', rawRel: '相唱和'},
+    {id: '450104', label: '閻寬', role: 'Alter (关联人)', location: '长安', sentiment: '敬仰', group: '文学山水', color: '#27ae60', rawRel: '相唱和'},
+    {id: '450543', label: '岑勛', role: 'Alter (关联人)', location: '嵩阳', sentiment: '狂喜', group: '文学山水', color: '#27ae60', rawRel: '相唱和'},
+    {id: '31314', label: '李令問', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '93956', label: '孟浩然', role: 'Alter (关联人)', location: '襄阳、江夏', sentiment: '敬仰、惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '140955', label: '李濟', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '175923', label: '王炎', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '184796', label: '孔巢父', role: 'Alter (关联人)', location: '徂徕山', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '380574', label: '李藏用', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '445138', label: '高如貴', role: 'Alter (关联人)', location: '齐州', sentiment: '敬仰', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '445740', label: '元演', role: 'Alter (关联人)', location: '太原、随州', sentiment: '狂喜、惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '445927', label: '張孟熊', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '446017', label: '張遙', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '446156', label: '裴政', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '446191', label: '裴大澤', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '446213', label: '裴圖南', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '446671', label: '崔度', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '446947', label: '白利', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '447334', label: '竇薄華', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '447522', label: '褚三清', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '447723', label: '李襄', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '447767', label: '李雲', role: 'Alter (关联人)', location: '宣城', sentiment: '狂喜、惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '447843', label: '李綰', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '447980', label: '李沈', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '447992', label: '李清', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '448011', label: '李凝', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '448056', label: '李賁', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '448242', label: '李錞', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '448563', label: '范宣', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '448729', label: '韓準', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '448919', label: '杜秀芝', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '449124', label: '楊燕', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '449183', label: '郄昂', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '449325', label: '趙國珍', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '449518', label: '呂杲', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '450346', label: '鄭灌', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '450637', label: '釋僧晏', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '512546', label: '梁昌', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '512623', label: '李青', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '512628', label: '李耑', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'},
+    {id: '512629', label: '黃鐘', role: 'Alter (关联人)', location: '长安', sentiment: '惜别', group: '文学山水', color: '#27ae60', rawRel: '為Y作臨別贈言(送別詩、序)'}
+];
+
+export const NETWORK_EDGES_DATA: NetworkEdge[] = [
+    {source: '32540', target: '3915', label: '友', weight: 1},
+    {source: '32540', target: '439016', label: '友', weight: 1},
+    {source: '32540', target: '445762', label: '友', weight: 1},
+    {source: '32540', target: '445895', label: '友', weight: 1},
+    {source: '32540', target: '450698', label: '友', weight: 1},
+    {source: '32540', target: '512539', label: '友', weight: 1},
+    {source: '32540', target: '447047', label: '被Y推薦', weight: 1},
+    {source: '32540', target: '447380', label: '被Y推薦', weight: 1},
+    {source: '32540', target: '93456', label: '遭到Y的反對/攻訐', weight: 1},
+    {source: '32540', target: '94338', label: '遭到Y的反對/攻訐', weight: 1},
+    {source: '32540', target: '11605', label: '被Y欣賞/器重', weight: 1},
+    {source: '32540', target: '15353', label: '被Y欣賞/器重', weight: 1},
+    {source: '32540', target: '19244', label: '被Y欣賞/器重', weight: 1},
+    {source: '32540', target: '92452', label: '被Y欣賞/器重', weight: 1},
+    {source: '32540', target: '189077', label: '被Y欣賞/器重', weight: 1},
+    {source: '32540', target: '92180', label: '學生為Y', weight: 1},
+    {source: '32540', target: '92921', label: '為Y所著書作序', weight: 1},
+    {source: '32540', target: '1571', label: '書序由Y所作', weight: 1},
+    {source: '32540', target: '4141', label: '書序由Y所作', weight: 1},
+    {source: '32540', target: '7364', label: '書序由Y所作', weight: 1},
+    {source: '32540', target: '176024', label: '書序由Y所作', weight: 1},
+    {source: '32540', target: '32162', label: '墓誌銘由Y所作', weight: 1},
+    {source: '32540', target: '32694', label: '從Y遊', weight: 1},
+    {source: '32540', target: '173788', label: '從Y遊', weight: 1},
+    {source: '32540', target: '3640', label: '詩作為Y所稱道', weight: 1},
+    {source: '32540', target: '196184', label: '以詩諷忤Y', weight: 1},
+    {source: '32540', target: '94367', label: '相唱和', weight: 1},
+    {source: '32540', target: '445623', label: '相唱和', weight: 1},
+    {source: '32540', target: '446112', label: '相唱和', weight: 1},
+    {source: '32540', target: '446496', label: '相唱和', weight: 1},
+    {source: '32540', target: '446738', label: '相唱和', weight: 1},
+    {source: '32540', target: '446810', label: '相唱和', weight: 1},
+    {source: '32540', target: '447339', label: '相唱和', weight: 1},
+    {source: '32540', target: '447367', label: '相唱和', weight: 1},
+    {source: '32540', target: '447855', label: '相唱和', weight: 1},
+    {source: '32540', target: '450104', label: '相唱和', weight: 1},
+    {source: '32540', target: '450543', label: '相唱和', weight: 1},
+    {source: '32540', target: '31314', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '93956', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '140955', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '175923', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '176024', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '184796', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '380574', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '445138', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '445740', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '445927', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '446017', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '446156', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '446191', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '446213', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '446671', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '446947', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '447334', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '447522', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '447723', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '447767', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '447843', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '447980', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '447992', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '448011', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '448056', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '448242', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '448563', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '448729', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '448919', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '449124', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '449183', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '449325', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '449518', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '450346', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '450637', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '512546', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '512623', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '512628', label: '為Y作臨別贈言(送別詩、序)', weight: 1},
+    {source: '32540', target: '512629', label: '為Y作臨別贈言(送別詩、序)', weight: 1}
+];

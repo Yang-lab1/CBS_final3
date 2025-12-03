@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { T, LIFE_EVENTS, DRINK_DATA, MOOD_TRANSLATIONS, TEAM_MEMBERS, RESEARCH_OVERVIEW, RESEARCH_RESULTS, DATA_SOURCES } from '../constants';
+import { T, LIFE_EVENTS, DRINK_DATA, MOOD_TRANSLATIONS, TEAM_MEMBERS, RESEARCH_OVERVIEW, RESEARCH_RESULTS, DATA_SOURCES, NETWORK_NODES_DATA, NETWORK_EDGES_DATA } from '../constants';
 import { Lang } from '../types';
 import { generateResponse } from '../services/geminiService';
 
@@ -16,27 +16,13 @@ interface ViewProps {
     lang: Lang;
 }
 
-const FALLBACK_NET_DATA = [
-    { name: "杜甫", rel: "好友" },
-    { name: "孟浩然", rel: "好友" },
-    { name: "高适", rel: "好友" },
-    { name: "贺知章", rel: "赏识" },
-    { name: "汪伦", rel: "好友" },
-    { name: "杨贵妃", rel: "宫廷关联" },
-    { name: "玄宗", rel: "君臣" },
-    { name: "王昌龄", rel: "好友" },
-    { name: "元丹丘", rel: "道友" }
-];
-
 export const NetworkPage: React.FC<ViewProps> = ({ onBack, lang }) => {
     const [network, setNetwork] = useState<any>(null);
     const containerRef = useRef<HTMLDivElement>(null);
-    const [loading, setLoading] = useState(false);
     const [reportLoading, setReportLoading] = useState(false);
     const [reportContent, setReportContent] = useState<string>("");
     const [nodesDataSet, setNodesDataSet] = useState<any>(null);
     const [edgesDataSet, setEdgesDataSet] = useState<any>(null);
-    const [analyzed, setAnalyzed] = useState(false);
 
     useEffect(() => {
         if (window.vis) {
@@ -44,13 +30,6 @@ export const NetworkPage: React.FC<ViewProps> = ({ onBack, lang }) => {
             const edges = new window.vis.DataSet();
             setNodesDataSet(nodes);
             setEdgesDataSet(edges);
-
-            // Initial Li Bai node
-            nodes.add({
-                id: "0000", label: "李白",
-                color: "#f1c40f", size: 40,
-                title: "诗仙", font: { size: 20 }
-            });
         }
     }, []);
 
@@ -58,13 +37,23 @@ export const NetworkPage: React.FC<ViewProps> = ({ onBack, lang }) => {
         if (containerRef.current && nodesDataSet && edgesDataSet && !network) {
             const data = { nodes: nodesDataSet, edges: edgesDataSet };
             const options = {
-                nodes: { shape: "dot", font: { color: "#333", face: 'Inter' }, borderWidth: 2 },
+                nodes: { 
+                    shape: "dot", 
+                    font: { 
+                        color: "#333", 
+                        face: 'Inter',
+                        strokeWidth: 2,
+                        strokeColor: '#fff'
+                    }, 
+                    borderWidth: 0, // Removed border as requested
+                    shadow: true
+                },
                 physics: {
-                    forceAtlas2Based: { gravitationalConstant: -60, springLength: 100 },
+                    forceAtlas2Based: { gravitationalConstant: -40, springLength: 90, springConstant: 0.06, damping: 0.4 },
                     minVelocity: 0.75,
                     solver: "forceAtlas2Based"
                 },
-                interaction: { hover: true }
+                interaction: { hover: true, tooltipDelay: 200 }
             };
             const net = new window.vis.Network(containerRef.current, data, options);
             setNetwork(net);
@@ -72,73 +61,73 @@ export const NetworkPage: React.FC<ViewProps> = ({ onBack, lang }) => {
             net.on("click", (params: any) => {
                 if (params.nodes.length > 0) {
                     const nodeId = params.nodes[0];
-                    if (nodeId === "0000") return;
+                    if (nodeId === "32540") return; // Skip Li Bai click for report
                     const nodeData = nodesDataSet.get(nodeId);
                     generateReport(nodeData.label);
                 }
             });
+            
+            // Load initial data immediately
+            loadData();
         }
     }, [nodesDataSet, edgesDataSet, network]);
 
-    const startProcess = async () => {
-        setLoading(true);
-        setReportContent("");
+    const loadData = () => {
+        if (!nodesDataSet || !edgesDataSet) return;
+
+        const visNodes = NETWORK_NODES_DATA.map(n => {
+            let nodeColor = n.color;
+            
+            // Color Mapping Logic based on User Request (Matching Figure 2 Blue Palette)
+            if (n.id === '32540') {
+                // Li Bai (Center) -> Red
+                nodeColor = '#ef4444'; 
+            } else {
+                // Surroundings -> Specific Blue Palette from Analytics Chart
+                switch (n.color) {
+                    case '#e74c3c': // Originally Red (Political Success) -> Medium Blue (Water)
+                        nodeColor = '#2171b5'; 
+                        break;
+                    case '#2c3e50': // Originally Dark Blue (Exile) -> Darkest Blue (Moon)
+                        nodeColor = '#08306b'; 
+                        break;
+                    case '#27ae60': // Originally Green (Literary/Nature) -> Light Blue (Cloud)
+                        nodeColor = '#4292c6'; 
+                        break;
+                    case '#bdc3c7': // Originally Gray (Other) -> Pale Blue (Sky)
+                        nodeColor = '#9ecae1'; 
+                        break;
+                    default:
+                        nodeColor = '#6baed6'; // Default Light Blue
+                }
+            }
+
+            return {
+                id: n.id,
+                label: n.label,
+                color: nodeColor,
+                size: n.id === '32540' ? 50 : 25, 
+                title: `${n.label}\n📍 ${n.location}\n❤️ ${n.sentiment}\n🔗 ${n.rawRel}`,
+                font: n.id === '32540' 
+                    ? { size: 24, face: 'Noto Serif SC', bold: true, color: '#ef4444', background: 'white' } 
+                    : { size: 14, color: '#475569' }
+            };
+        });
+
+        const visEdges = NETWORK_EDGES_DATA.map(e => ({
+            from: e.source,
+            to: e.target,
+            color: { color: '#cbd5e1', opacity: 0.3 }, 
+            width: 1,
+            title: e.label
+        }));
+
+        nodesDataSet.clear();
+        edgesDataSet.clear();
+        nodesDataSet.add(visNodes);
+        edgesDataSet.add(visEdges);
         
-        try {
-            // 1. Data Prep (Fallback mostly due to CORS on CBDB)
-            const personList = FALLBACK_NET_DATA.map((d, index) => ({ ...d, id: "fb_" + index }));
-
-            // 2. AI Analysis
-            const resString = await generateResponse('network_batch', { personList }, lang);
-            let aiResults: any = {};
-            try {
-                aiResults = JSON.parse(resString);
-            } catch (e) {
-                console.error("Failed to parse AI JSON", e);
-                // Simple Fallback if JSON fails
-                personList.forEach(p => aiResults[p.name] = { color: "#bdc3c7", location: "Unknown", mood: "Neutral" });
-            }
-
-            // 3. Update Graph
-            if (nodesDataSet && edgesDataSet) {
-                nodesDataSet.clear();
-                edgesDataSet.clear();
-
-                nodesDataSet.add({
-                    id: "0000", label: lang === 'zh' ? "李白" : "Li Bai",
-                    color: "#f1c40f", size: 45,
-                    title: lang === 'zh' ? "诗仙" : "The Poet Immortal", font: { size: 20, face: 'Noto Serif SC' }
-                });
-
-                personList.forEach(p => {
-                    const meta = aiResults[p.name] || { color: "#bdc3c7", location: "?", mood: "?" };
-                    const hoverText = `${p.name}\n📍 ${meta.location}\n❤️ ${meta.mood}`;
-
-                    nodesDataSet.add({
-                        id: p.id,
-                        label: p.name,
-                        color: meta.color,
-                        size: 25,
-                        title: hoverText
-                    });
-
-                    edgesDataSet.add({
-                        from: "0000",
-                        to: p.id,
-                        color: { color: meta.color, opacity: 0.6 },
-                        width: 3
-                    });
-                });
-                
-                if (network) network.fit();
-                setAnalyzed(true);
-            }
-
-        } catch (error) {
-            console.error(error);
-        } finally {
-            setLoading(false);
-        }
+        if (network) network.fit();
     };
 
     const generateReport = async (name: string) => {
@@ -163,20 +152,17 @@ export const NetworkPage: React.FC<ViewProps> = ({ onBack, lang }) => {
                 
                 {/* Controls & Legend */}
                 <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-200 mb-6 flex flex-col md:flex-row gap-4 items-center justify-between animate-fade-up">
-                    <button 
-                        onClick={startProcess} 
-                        disabled={loading}
-                        className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-lg shadow hover:shadow-lg disabled:opacity-50 transition-all flex items-center gap-2"
-                    >
-                        {loading ? <span className="animate-spin">⌛</span> : <span>🤖</span>}
-                        {lang === 'zh' ? '构建 GIS-NLP 图谱' : 'Build GIS-NLP Graph'}
-                    </button>
+                    <div className="flex items-center gap-2 text-sm font-bold text-gray-700">
+                        <span className="text-xl">🕸️</span>
+                        <span>{lang === 'zh' ? '人物社会网络 (基于 CBDB & NLP)' : 'Social Network (CBDB & NLP)'}</span>
+                    </div>
 
                     <div className="flex flex-wrap gap-4 text-xs md:text-sm font-sans text-gray-600 bg-gray-50 p-3 rounded-lg border border-gray-100">
-                        <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-[#e74c3c] shadow-sm"></span><span>{lang === 'zh' ? '政治抱负 (长安)' : 'Political Ambition'}</span></div>
-                        <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-[#2c3e50] shadow-sm"></span><span>{lang === 'zh' ? '悲愤流放 (夜郎)' : 'Exile/Grief'}</span></div>
-                        <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-[#27ae60] shadow-sm"></span><span>{lang === 'zh' ? '山水漫游 (江南)' : 'Nature/Leisure'}</span></div>
-                        <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-[#bdc3c7] shadow-sm"></span><span>{lang === 'zh' ? '其他' : 'Other'}</span></div>
+                        <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-[#ef4444] shadow-sm border border-red-200"></span><span>{lang === 'zh' ? '李白 (本我)' : 'Li Bai (Ego)'}</span></div>
+                        <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-[#2171b5] shadow-sm"></span><span>{lang === 'zh' ? '政治得意' : 'Political Success'}</span></div>
+                        <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-[#08306b] shadow-sm"></span><span>{lang === 'zh' ? '政治贬谪' : 'Exile/Grief'}</span></div>
+                        <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-[#4292c6] shadow-sm"></span><span>{lang === 'zh' ? '文学山水' : 'Nature/Poetry'}</span></div>
+                        <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full bg-[#9ecae1] shadow-sm"></span><span>{lang === 'zh' ? '其他' : 'Other'}</span></div>
                     </div>
                 </div>
 
@@ -188,12 +174,7 @@ export const NetworkPage: React.FC<ViewProps> = ({ onBack, lang }) => {
                         <div className="absolute top-4 left-4 z-10 bg-white/90 px-3 py-1 rounded text-xs font-bold text-gray-500 shadow-sm">
                             Vis.js Network
                         </div>
-                        <div ref={containerRef} className="w-full h-full bg-[#fdfbf7]" />
-                        {!analyzed && !loading && (
-                            <div className="absolute inset-0 flex items-center justify-center bg-white/60 pointer-events-none">
-                                <p className="text-gray-400 font-medium">{lang === 'zh' ? '点击上方按钮生成图谱' : 'Click button to generate graph'}</p>
-                            </div>
-                        )}
+                        <div ref={containerRef} className="w-full h-full bg-[#f8fafc]" />
                     </div>
 
                     {/* Right: Report Panel */}
@@ -436,7 +417,7 @@ export const AboutPage: React.FC<ViewProps> = ({ onBack, lang }) => {
                         <div className="flex justify-center">
                             <a href="https://github.com/1849083010n-cell/libaifinal.github.io" target="_blank" rel="noopener noreferrer" className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 hover:bg-gray-800 hover:scale-105 shadow-xl">
                                 <svg className="w-6 h-6 mr-3" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                    <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-1.334-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                                 </svg>
                                 {T['about.download_btn'][lang]}
                             </a>
